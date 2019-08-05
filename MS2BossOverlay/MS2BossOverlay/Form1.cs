@@ -65,7 +65,7 @@ namespace MS2BossOverlay
                 var map = new Label {Text = boss.Map, Location = new Point(50, 45), Font = new Font("Arial", 7)};
                 map.Click += (s, e) => 
                 {
-                    Clipboard.SetText(string.Join(string.Empty, s.ToString().Skip(38)));
+                    Clipboard.SetText(string.Join(string.Empty, s.ToString().Skip(34)));
                 };
 
                 var time = new Label
@@ -146,7 +146,16 @@ namespace MS2BossOverlay
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(@"A project created mainly for myself. Source Code available here : ""https://github.com/ImSpare/Maplestory2BossOverlay"" Hover your mouse over text to view tips", @"About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                @"A project created mainly for myself. Hover your mouse over text to view tips. Click the help button to open the github page for updates or to view the source code",
+                @"About",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1,
+                0,
+                helpFilePath: "https://github.com/ImSpare/Maplestory2BossOverlay"
+            );
+
         }
 
         private void DebugButton_Click(object sender, EventArgs e)
