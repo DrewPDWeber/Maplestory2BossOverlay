@@ -16,7 +16,7 @@ namespace MS2BossOverlay
             Bitmap bmp = null;
             try
             {
-                var wreq = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/ImSpare/MS2BossOverlay/master/images/" + bossname + ".png");
+                var wreq = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/ImSpare/Maplestory2BossOverlay/master/images/" + bossname + ".png");
                 wreq.AllowWriteStreamBuffering = true;
 
                 wresp = (HttpWebResponse)wreq.GetResponse();
@@ -39,7 +39,7 @@ namespace MS2BossOverlay
 
         public static String GetBosses()
         {
-            var request = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/ImSpare/MS2BossOverlay/master/boss.json");
+            var request = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/ImSpare/Maplestory2BossOverlay/master/boss.json");
             var response = (HttpWebResponse)request.GetResponse();
             var resStream = response.GetResponseStream();
             var count = 0;
