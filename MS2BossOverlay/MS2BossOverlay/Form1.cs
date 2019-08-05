@@ -36,8 +36,10 @@ namespace MS2BossOverlay
         private int _requester = 9;
         private void UI_Updater_Tick(object sender, EventArgs e)
         {
-            TopMost = true;
-            timerLabel.Text = DateTime.UtcNow.ToString("mm:ss");
+            if(Properties.Settings.Default.Topmost)
+                TopMost = true;
+
+            timerLabel.Text = DateTime.UtcNow.AddMinutes(Properties.Settings.Default.TimerOffset).ToString("mm:ss") ;
 
             _requester++;
             if (_requester <= 10) return; 
@@ -108,8 +110,8 @@ namespace MS2BossOverlay
         private bool IsCurrent(BossStructure boss)
         {
             //var nowMinutes = 5;
-            var nowMinutes = int.Parse(DateTime.UtcNow.ToString("mm"));
-            var start = boss.Minutes-2;
+            var nowMinutes = int.Parse(DateTime.UtcNow.ToString("mm")) + Properties.Settings.Default.TimerOffset;
+            var start = boss.Minutes - Properties.Settings.Default.BossOffset;
             var end = boss.Minutes + boss.Open;
 
             if (end <= 60) return nowMinutes >= start && nowMinutes <= end;
@@ -165,6 +167,14 @@ namespace MS2BossOverlay
                 if(IsCurrent(boss))
                     MessageBox.Show(boss.Name);
             }
+        }
+        private Settings settingsForm;
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+            settingsForm?.Close();
+
+            settingsForm = new Settings();
+            settingsForm.Show();
         }
     }
 }

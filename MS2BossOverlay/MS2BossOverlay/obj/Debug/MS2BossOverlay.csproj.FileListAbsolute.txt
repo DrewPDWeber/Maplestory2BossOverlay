@@ -32,3 +32,4 @@ C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\M
 C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.csproj.CopyComplete
 C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.exe
 C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.pdb
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.Settings.resources
