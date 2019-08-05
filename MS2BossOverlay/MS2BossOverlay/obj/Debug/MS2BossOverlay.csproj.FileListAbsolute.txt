@@ -21,3 +21,14 @@ C:\Users\dreww\OneDrive\Documents\GitHub\MS2BossOverlay\MS2BossOverlay\MS2BossOv
 C:\Users\dreww\OneDrive\Documents\GitHub\MS2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.csproj.GenerateResource.cache
 C:\Users\dreww\OneDrive\Documents\GitHub\MS2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.csproj.CoreCompileInputs.cache
 C:\Users\dreww\OneDrive\Documents\GitHub\MS2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.csproj.CopyComplete
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\bin\Debug\MS2BossOverlay.exe.config
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\bin\Debug\MS2BossOverlay.exe
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\bin\Debug\MS2BossOverlay.pdb
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.csprojAssemblyReference.cache
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.Form1.resources
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.Properties.Resources.resources
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.csproj.GenerateResource.cache
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.csproj.CoreCompileInputs.cache
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.csproj.CopyComplete
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.exe
+C:\Users\dreww\OneDrive\Documents\GitHub\Maplestory2BossOverlay\MS2BossOverlay\MS2BossOverlay\obj\Debug\MS2BossOverlay.pdb

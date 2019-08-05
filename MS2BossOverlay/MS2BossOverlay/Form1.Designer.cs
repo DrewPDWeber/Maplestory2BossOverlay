@@ -63,7 +63,7 @@
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(60, 21);
             this.helpButton.TabIndex = 11;
-            this.helpButton.Text = "Help";
+            this.helpButton.Text = "About";
             this.helpButton.UseVisualStyleBackColor = true;
             this.helpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
@@ -121,13 +121,14 @@
             this.debugButton.TabIndex = 13;
             this.debugButton.Text = "debug";
             this.debugButton.UseVisualStyleBackColor = true;
+            this.debugButton.Visible = false;
             this.debugButton.Click += new System.EventHandler(this.DebugButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 497);
+            this.ClientSize = new System.Drawing.Size(415, 80);
             this.Controls.Add(this.topLabel);
             this.Controls.Add(this.debugButton);
             this.Controls.Add(this.label1);

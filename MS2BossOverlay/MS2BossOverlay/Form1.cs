@@ -12,17 +12,8 @@ namespace MS2BossOverlay
             InitializeComponent();
         }
 
-        /*
-        [StructLayout(LayoutKind.Sequential)]
-        public struct Rect
-        {
-            public int Left { get; set; }
-            public int Top { get; set; }
-            public int Right { get; set; }
-            public int Bottom { get; set; }
-        }
-        */
 
+        // ReSharper disable once IdentifierTypo
         public const int WmNclbuttondown = 0xA1;
         public const int HtCaption = 0x2;
 
@@ -36,7 +27,7 @@ namespace MS2BossOverlay
         private void Form1_Load(object sender, EventArgs e)
         {
             var genBossStruct = new Bosses();
-            _bosses = genBossStruct.decode(WebClient.GetBosses());
+            _bosses = genBossStruct.Decode(WebClient.GetBosses());
 
             UI_Updater.Enabled = true;
 
@@ -49,7 +40,7 @@ namespace MS2BossOverlay
             timerLabel.Text = DateTime.UtcNow.ToString("mm:ss");
 
             _requester++;
-            if (_requester <= 10) return; // every 10 seconds generate panels
+            if (_requester <= 10) return; 
 
             GenerateBossPanels();
             _requester = 0;
@@ -62,16 +53,16 @@ namespace MS2BossOverlay
             var row = 0;
             var column = 0;
             var tt = new ToolTip();
-            worldBossPanel.Controls.Clear(); //clear current bosses
+            worldBossPanel.Controls.Clear();
             foreach (var boss in _bosses)
             {
                 if (IsCurrent(boss))
                 {
                     var wb = new GroupBox { Size = new Size(200, 100),Location = new Point(5+ column * 200, row * 90) };
 
-                    var name = new Label {Text = @"Name:" + boss.name, Location = new Point(75, 30)};
+                    var name = new Label {Text = @"Name:" + boss.Name, Location = new Point(75, 30)};
 
-                    var map = new Label {Text = @"Map:" + boss.map, Location = new Point(75, 52)};
+                    var map = new Label {Text = @"Map:" + boss.Map, Location = new Point(75, 52)};
                     map.Click += (s, e) => 
                     {
                         Clipboard.SetText(string.Join(string.Empty, s.ToString().Skip(38)));
@@ -79,12 +70,12 @@ namespace MS2BossOverlay
 
                     var time = new Label
                     {
-                        Text = @"Time:" + boss.minutes + @"-" + (boss.minutes + boss.open), Location = new Point(75, 74)
+                        Text = @"Time:" + boss.Minutes + @"-" + (boss.Minutes + boss.Open), Location = new Point(75, 74)
                     };
 
                     var img = new PictureBox
                     {
-                        Image = WebClient.GetBossImage(boss.name.ToLower()),
+                        Image = WebClient.GetBossImage(boss.Name.ToLower()),
                         Location = new Point(0*column, 30),
                         Size = new Size(50, 50),
                         SizeMode = PictureBoxSizeMode.StretchImage
@@ -115,8 +106,8 @@ namespace MS2BossOverlay
         private bool IsCurrent(BossStructure boss)
         {
             var nowMinutes = int.Parse(DateTime.UtcNow.ToString("mm"));
-            var start = boss.minutes-2;
-            var end = boss.minutes + boss.open;
+            var start = boss.Minutes-2;
+            var end = boss.Minutes + boss.Open;
 
             if (end > 60)
             {
@@ -155,7 +146,7 @@ namespace MS2BossOverlay
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            GenerateBossPanels();
+            MessageBox.Show(@"A project created mainly for myself. Source Code available here : ""https://github.com/ImSpare/Maplestory2BossOverlay"" More info will be added later", @"About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void DebugButton_Click(object sender, EventArgs e)
@@ -163,7 +154,7 @@ namespace MS2BossOverlay
             foreach (var boss in _bosses)
             {
                 if(IsCurrent(boss))
-                    MessageBox.Show(boss.name);
+                    MessageBox.Show(boss.Name);
             }
         }
     }

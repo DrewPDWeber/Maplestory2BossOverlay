@@ -1,14 +1,12 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Text;
 
 namespace MS2BossOverlay
 {
-    class WebClient
+    internal class WebClient
     {
-
         public static Bitmap GetBossImage(string bossname)
         {
             HttpWebResponse wresp = null;
@@ -16,10 +14,12 @@ namespace MS2BossOverlay
             Bitmap bmp = null;
             try
             {
-                var wreq = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/ImSpare/Maplestory2BossOverlay/master/images/" + bossname + ".png");
+                var wreq = (HttpWebRequest) WebRequest.Create(
+                    "https://raw.githubusercontent.com/ImSpare/Maplestory2BossOverlay/master/images/" + bossname +
+                    ".png");
                 wreq.AllowWriteStreamBuffering = true;
 
-                wresp = (HttpWebResponse)wreq.GetResponse();
+                wresp = (HttpWebResponse) wreq.GetResponse();
 
                 if ((mystream = wresp.GetResponseStream()) != null)
                     bmp = new Bitmap(mystream);
@@ -34,13 +34,16 @@ namespace MS2BossOverlay
 
                 wresp?.Close();
             }
-            return (bmp);
+
+            return bmp;
         }
 
-        public static String GetBosses()
+        public static string GetBosses()
         {
-            var request = (HttpWebRequest)WebRequest.Create("https://raw.githubusercontent.com/ImSpare/Maplestory2BossOverlay/master/boss.json");
-            var response = (HttpWebResponse)request.GetResponse();
+            var request =
+                (HttpWebRequest) WebRequest.Create(
+                    "https://raw.githubusercontent.com/ImSpare/Maplestory2BossOverlay/master/boss.json");
+            var response = (HttpWebResponse) request.GetResponse();
             var resStream = response.GetResponseStream();
             var count = 0;
             var buf = new byte[32];
@@ -53,8 +56,7 @@ namespace MS2BossOverlay
                 if (count == 0) continue;
                 var tempString = Encoding.ASCII.GetString(buf, 0, count);
                 sb.Append(tempString);
-            }
-            while (count > 0);
+            } while (count > 0);
 
             return sb.ToString();
         }
