@@ -50,7 +50,7 @@ namespace MS2BossOverlay
 
         private void GenerateBossPanels()
         {
-            var row = 0;
+            var row = 1;
             var column = 0;
             var tt = new ToolTip();
             worldBossPanel.Controls.Clear();
@@ -58,11 +58,11 @@ namespace MS2BossOverlay
             {
                 if (!IsCurrent(boss)) continue;
 
-                var wb = new GroupBox { Size = new Size(175, 100),Location = new Point(35 + column * 175, row * 90) };
+                var wb = new GroupBox { Size = new Size(175, 100),Location = new Point(35 + column * 175, (row-1) * 90) };
 
-                var name = new Label {Text = boss.Name, Location = new Point(50, 30), Font = new Font("Arial", 10) };
+                var name = new Label {Text = boss.Name, Location = new Point(50, 25), Font = new Font("Arial", 7) };
 
-                var map = new Label {Text = boss.Map, Location = new Point(50, 51), Font = new Font("Arial", 7)};
+                var map = new Label {Text = boss.Map, Location = new Point(50, 45), Font = new Font("Arial", 7)};
                 map.Click += (s, e) => 
                 {
                     Clipboard.SetText(string.Join(string.Empty, s.ToString().Skip(38)));
@@ -70,8 +70,8 @@ namespace MS2BossOverlay
 
                 var time = new Label
                 {
-                    Text = + boss.Minutes + @"-" + (boss.Minutes + boss.Open), Location = new Point(50, 72),
-                    Font = new Font("Arial", 10)
+                    Text = + boss.Minutes + @"-" + (boss.Minutes + boss.Open), Location = new Point(50, 65),
+                    Font = new Font("Arial", 7)
                 };
 
                 var img = new PictureBox
@@ -93,17 +93,21 @@ namespace MS2BossOverlay
                 tt.SetToolTip(img, "What the boss \"should\" look like");
                 worldBossPanel.Controls.Add(wb);
 
-                if ((column++) != 1) continue;
-                column = 0;
-                row++;
+                if ((column++) == 1)
+                {
+                    ++row;
+                    column = 0;
+                }
             }
 
-            Height = row == 0 && column == 0 ? 80 : 80 + ((row+1) * 100);
+            //MessageBox.Show(row.ToString());
+            Height = row == 0 && column == 0 ? 80 : (row * 125);
         }
 
         private bool IsCurrent(BossStructure boss)
         {
-            var nowMinutes = int.Parse(DateTime.UtcNow.ToString("mm"));
+            var nowMinutes = 5;
+           // var nowMinutes = int.Parse(DateTime.UtcNow.ToString("mm"));
             var start = boss.Minutes-2;
             var end = boss.Minutes + boss.Open;
 
