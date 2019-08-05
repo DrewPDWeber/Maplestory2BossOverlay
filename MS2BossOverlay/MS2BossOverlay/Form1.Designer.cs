@@ -63,7 +63,7 @@
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(19, 21);
             this.helpButton.TabIndex = 11;
-            this.helpButton.Text = "?";
+            this.helpButton.Text = "❓";
             this.helpButton.UseVisualStyleBackColor = true;
             this.helpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 

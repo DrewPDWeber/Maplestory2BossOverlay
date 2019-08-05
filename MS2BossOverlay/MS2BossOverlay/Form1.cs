@@ -36,8 +36,7 @@ namespace MS2BossOverlay
         private int _requester = 9;
         private void UI_Updater_Tick(object sender, EventArgs e)
         {
-            if(Properties.Settings.Default.Topmost)
-                TopMost = true;
+            TopMost = Properties.Settings.Default.Topmost;
 
             timerLabel.Text = DateTime.UtcNow.AddMinutes(Properties.Settings.Default.TimerOffset).ToString("mm:ss") ;
 
