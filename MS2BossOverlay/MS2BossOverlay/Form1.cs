@@ -60,9 +60,9 @@ namespace MS2BossOverlay
 
                 var wb = new GroupBox { Size = new Size(175, 100),Location = new Point(35 + column * 175, row * 90) };
 
-                var name = new Label {Text = boss.Name, Location = new Point(50, 30)};
+                var name = new Label {Text = boss.Name, Location = new Point(50, 30), Font = new Font("Arial", 10) };
 
-                var map = new Label {Text = boss.Map, Location = new Point(50, 51)};
+                var map = new Label {Text = boss.Map, Location = new Point(50, 51), Font = new Font("Arial", 7)};
                 map.Click += (s, e) => 
                 {
                     Clipboard.SetText(string.Join(string.Empty, s.ToString().Skip(38)));
@@ -70,7 +70,8 @@ namespace MS2BossOverlay
 
                 var time = new Label
                 {
-                    Text = + boss.Minutes + @"-" + (boss.Minutes + boss.Open), Location = new Point(50, 72)
+                    Text = + boss.Minutes + @"-" + (boss.Minutes + boss.Open), Location = new Point(50, 72),
+                    Font = new Font("Arial", 10)
                 };
 
                 var img = new PictureBox
@@ -97,7 +98,7 @@ namespace MS2BossOverlay
                 row++;
             }
 
-            Height = row == 0 && column == 0 ? 80 : 80 + (row * 100);
+            Height = row == 0 && column == 0 ? 80 : 80 + ((row+1) * 100);
         }
 
         private bool IsCurrent(BossStructure boss)
