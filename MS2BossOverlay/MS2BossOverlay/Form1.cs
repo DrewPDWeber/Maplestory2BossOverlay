@@ -95,13 +95,14 @@ namespace MS2BossOverlay
 
                 if ((column++) == 1)
                 {
-                    ++row;
+                    row++;
                     column = 0;
                 }
             }
 
             //MessageBox.Show(row.ToString());
-            Height = row == 0 && column == 0 ? 80 : (row * 125);
+    
+            Height = row == 1 && column == 0 ? 80 : column == 0 ? 80 + ((row-1)*100) : 80 + (row * 100);
         }
 
         private bool IsCurrent(BossStructure boss)
