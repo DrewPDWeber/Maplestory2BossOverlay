@@ -1,0 +1,5 @@
+Credits to domness @ https://github.com/domness/MapleStory-Boss-Timer for the following:
+ - Original Boss JSON
+ - Boss Images
+ - function isCurrent
+	- was to lazy to make my own so i copied and modified his 
