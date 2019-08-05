@@ -56,48 +56,45 @@ namespace MS2BossOverlay
             worldBossPanel.Controls.Clear();
             foreach (var boss in _bosses)
             {
-                if (IsCurrent(boss))
+                if (!IsCurrent(boss)) continue;
+
+                var wb = new GroupBox { Size = new Size(175, 100),Location = new Point(35 + column * 175, row * 90) };
+
+                var name = new Label {Text = boss.Name, Location = new Point(50, 30)};
+
+                var map = new Label {Text = boss.Map, Location = new Point(50, 51)};
+                map.Click += (s, e) => 
                 {
-                    var wb = new GroupBox { Size = new Size(200, 100),Location = new Point(5+ column * 200, row * 90) };
+                    Clipboard.SetText(string.Join(string.Empty, s.ToString().Skip(38)));
+                };
 
-                    var name = new Label {Text = @"Name:" + boss.Name, Location = new Point(75, 30)};
+                var time = new Label
+                {
+                    Text = + boss.Minutes + @"-" + (boss.Minutes + boss.Open), Location = new Point(50, 72)
+                };
 
-                    var map = new Label {Text = @"Map:" + boss.Map, Location = new Point(75, 52)};
-                    map.Click += (s, e) => 
-                    {
-                        Clipboard.SetText(string.Join(string.Empty, s.ToString().Skip(38)));
-                    };
+                var img = new PictureBox
+                {
+                    Image = WebClient.GetBossImage(boss.Name.ToLower()),
+                    Location = new Point(0*column, 30),
+                    Size = new Size(50, 50),
+                    SizeMode = PictureBoxSizeMode.StretchImage
+                };
 
-                    var time = new Label
-                    {
-                        Text = @"Time:" + boss.Minutes + @"-" + (boss.Minutes + boss.Open), Location = new Point(75, 74)
-                    };
+                wb.Controls.Add(name);
+                wb.Controls.Add(map);
+                wb.Controls.Add(time);
+                wb.Controls.Add(img);
 
-                    var img = new PictureBox
-                    {
-                        Image = WebClient.GetBossImage(boss.Name.ToLower()),
-                        Location = new Point(0*column, 30),
-                        Size = new Size(50, 50),
-                        SizeMode = PictureBoxSizeMode.StretchImage
-                    };
+                tt.SetToolTip(name,"This is the name of the world boss");
+                tt.SetToolTip(map, "Click the map text to copy to clipboard");
+                tt.SetToolTip(time, "Time the boss is active");
+                tt.SetToolTip(img, "What the boss \"should\" look like");
+                worldBossPanel.Controls.Add(wb);
 
-                    wb.Controls.Add(name);
-                    wb.Controls.Add(map);
-                    wb.Controls.Add(time);
-                    wb.Controls.Add(img);
-
-                    tt.SetToolTip(name,"This is the name of the world boss");
-                    tt.SetToolTip(map, "Click the map text to copy to clipboard");
-                    tt.SetToolTip(time, "Time the boss is active");
-                    tt.SetToolTip(img, "What the boss \"should\" look like");
-                    worldBossPanel.Controls.Add(wb);
-
-                    if ((column++) == 1)
-                    {
-                        column = 0;
-                        row++;
-                    }
-                }
+                if ((column++) != 1) continue;
+                column = 0;
+                row++;
             }
 
             Height = row == 0 && column == 0 ? 80 : 80 + (row * 100);
@@ -109,16 +106,13 @@ namespace MS2BossOverlay
             var start = boss.Minutes-2;
             var end = boss.Minutes + boss.Open;
 
-            if (end > 60)
+            if (end <= 60) return nowMinutes >= start && nowMinutes <= end;
+            if (nowMinutes > 15) return nowMinutes >= start && nowMinutes <= end;
+
+            end -= 60;
+            if (nowMinutes <= end)
             {
-                if (nowMinutes <= 15)
-                {
-                    end -= 60;
-                    if (nowMinutes <= end)
-                    {
-                        return true;
-                    }
-                }
+                return true;
             }
 
             return nowMinutes >= start && nowMinutes <= end;
@@ -146,7 +140,7 @@ namespace MS2BossOverlay
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(@"A project created mainly for myself. Source Code available here : ""https://github.com/ImSpare/Maplestory2BossOverlay"" More info will be added later", @"About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(@"A project created mainly for myself. Source Code available here : ""https://github.com/ImSpare/Maplestory2BossOverlay"" Hover your mouse over text to view tips", @"About", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void DebugButton_Click(object sender, EventArgs e)
