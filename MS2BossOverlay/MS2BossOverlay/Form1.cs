@@ -106,8 +106,8 @@ namespace MS2BossOverlay
 
         private bool IsCurrent(BossStructure boss)
         {
-            var nowMinutes = 5;
-           // var nowMinutes = int.Parse(DateTime.UtcNow.ToString("mm"));
+            //var nowMinutes = 5;
+            var nowMinutes = int.Parse(DateTime.UtcNow.ToString("mm"));
             var start = boss.Minutes-2;
             var end = boss.Minutes + boss.Open;
 
