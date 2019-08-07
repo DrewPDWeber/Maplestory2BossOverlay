@@ -38,6 +38,10 @@
             this.worldBossPanel = new System.Windows.Forms.Panel();
             this.debugButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.toolTipper = new System.Windows.Forms.ToolTip(this.components);
+            this.downloadButton = new System.Windows.Forms.Button();
+            this.testLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,6 +54,7 @@
             this.timerLabel.Size = new System.Drawing.Size(49, 20);
             this.timerLabel.TabIndex = 3;
             this.timerLabel.Text = "00:00";
+            this.toolTipper.SetToolTip(this.timerLabel, "The internal application clock");
             // 
             // UI_Updater
             // 
@@ -59,11 +64,12 @@
             // helpButton
             // 
             this.helpButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helpButton.Location = new System.Drawing.Point(12, 10);
+            this.helpButton.Location = new System.Drawing.Point(6, 10);
             this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(19, 21);
+            this.helpButton.Size = new System.Drawing.Size(20, 20);
             this.helpButton.TabIndex = 11;
             this.helpButton.Text = "❓";
+            this.toolTipper.SetToolTip(this.helpButton, "About");
             this.helpButton.UseVisualStyleBackColor = true;
             this.helpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
@@ -106,31 +112,67 @@
             // 
             // debugButton
             // 
-            this.debugButton.Location = new System.Drawing.Point(278, 52);
+            this.debugButton.Location = new System.Drawing.Point(355, 10);
             this.debugButton.Name = "debugButton";
-            this.debugButton.Size = new System.Drawing.Size(75, 23);
+            this.debugButton.Size = new System.Drawing.Size(20, 20);
             this.debugButton.TabIndex = 13;
-            this.debugButton.Text = "debug";
+            this.debugButton.Text = "🐞";
+            this.toolTipper.SetToolTip(this.debugButton, "Debug -Developers only-");
             this.debugButton.UseVisualStyleBackColor = true;
-            this.debugButton.Visible = false;
             this.debugButton.Click += new System.EventHandler(this.DebugButton_Click);
             // 
             // settingsButton
             // 
             this.settingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsButton.Location = new System.Drawing.Point(37, 10);
+            this.settingsButton.Location = new System.Drawing.Point(32, 10);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(19, 21);
+            this.settingsButton.Size = new System.Drawing.Size(20, 20);
             this.settingsButton.TabIndex = 14;
             this.settingsButton.Text = "⚙️";
+            this.toolTipper.SetToolTip(this.settingsButton, "Open the settings Menu");
             this.settingsButton.UseVisualStyleBackColor = true;
             this.settingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
+            // 
+            // updateButton
+            // 
+            this.updateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateButton.Location = new System.Drawing.Point(58, 10);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(20, 20);
+            this.updateButton.TabIndex = 15;
+            this.updateButton.Text = "⌛";
+            this.toolTipper.SetToolTip(this.updateButton, "Force UI Update (Check for boss spawns and regenerate UI)");
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
+            // downloadButton
+            // 
+            this.downloadButton.Location = new System.Drawing.Point(84, 10);
+            this.downloadButton.Name = "downloadButton";
+            this.downloadButton.Size = new System.Drawing.Size(20, 20);
+            this.downloadButton.TabIndex = 16;
+            this.downloadButton.Text = "🔻";
+            this.toolTipper.SetToolTip(this.downloadButton, "Force re-download of boss data (in case of issue or update)");
+            this.downloadButton.UseVisualStyleBackColor = true;
+            this.downloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
+            // 
+            // testLabel
+            // 
+            this.testLabel.AutoSize = true;
+            this.testLabel.Location = new System.Drawing.Point(304, 14);
+            this.testLabel.Name = "testLabel";
+            this.testLabel.Size = new System.Drawing.Size(10, 13);
+            this.testLabel.TabIndex = 17;
+            this.testLabel.Text = "t";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(415, 68);
+            this.Controls.Add(this.testLabel);
+            this.Controls.Add(this.downloadButton);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.topLabel);
             this.Controls.Add(this.debugButton);
@@ -160,6 +202,10 @@
         private System.Windows.Forms.Panel worldBossPanel;
         private System.Windows.Forms.Button debugButton;
         private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.ToolTip toolTipper;
+        private System.Windows.Forms.Button downloadButton;
+        private System.Windows.Forms.Label testLabel;
     }
 }
 

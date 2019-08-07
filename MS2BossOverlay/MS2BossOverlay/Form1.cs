@@ -41,6 +41,7 @@ namespace MS2BossOverlay
             timerLabel.Text = DateTime.UtcNow.AddMinutes(Properties.Settings.Default.TimerOffset).ToString("mm:ss") ;
 
             _requester++;
+            testLabel.Text = _requester.ToString();
             if (_requester <= 10) return; 
 
             GenerateBossPanels();
@@ -117,12 +118,7 @@ namespace MS2BossOverlay
             if (nowMinutes > 15) return nowMinutes >= start && nowMinutes <= end;
 
             end -= 60;
-            if (nowMinutes <= end)
-            {
-                return true;
-            }
-
-            return nowMinutes >= start && nowMinutes <= end;
+            return nowMinutes <= end || nowMinutes >= start && nowMinutes <= end;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -167,13 +163,31 @@ namespace MS2BossOverlay
                     MessageBox.Show(boss.Name);
             }
         }
-        private Settings settingsForm;
+        private Settings _settingsForm;
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-            settingsForm?.Close();
+            _settingsForm?.Close();
 
-            settingsForm = new Settings();
-            settingsForm.Show();
+            _settingsForm = new Settings();
+            _settingsForm.Show();
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            GenerateBossPanels();
+        }
+
+        private void DownloadButton_Click(object sender, EventArgs e)
+        {
+            UI_Updater.Enabled = false;
+
+            var genBossStruct = new Bosses();
+            _bosses = genBossStruct.Decode(WebClient.GetBosses());
+
+            UI_Updater.Enabled = true;
+            //MessageBox.Show("Completed");
+            GenerateBossPanels();
+
         }
     }
 }
