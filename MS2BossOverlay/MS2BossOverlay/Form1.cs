@@ -102,23 +102,29 @@ namespace MS2BossOverlay
                 }
             }
 
-            //MessageBox.Show(row.ToString());
-    
             Height = row == 1 && column == 0 ? 80 : column == 0 ? 80 + ((row-1)*100) : 80 + (row * 100);
         }
 
         private bool IsCurrent(BossStructure boss)
         {
-            //var nowMinutes = 5;
             var nowMinutes = int.Parse(DateTime.UtcNow.ToString("mm")) + Properties.Settings.Default.TimerOffset;
             var start = boss.Minutes - Properties.Settings.Default.BossOffset;
             var end = boss.Minutes + boss.Open;
 
-            if (end <= 60) return nowMinutes >= start && nowMinutes <= end;
-            if (nowMinutes > 15) return nowMinutes >= start && nowMinutes <= end;
+            if (nowMinutes >= start && nowMinutes <= end)
+            {
+                return true;
+            }
 
-            end -= 60;
-            return nowMinutes <= end || nowMinutes >= start && nowMinutes <= end;
+            if (nowMinutes >= 60)
+            {
+                nowMinutes /= 60;
+                return nowMinutes >= start && nowMinutes <= end;
+            }
+
+            return false;
+            
+
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -162,6 +168,7 @@ namespace MS2BossOverlay
                 if(IsCurrent(boss))
                     MessageBox.Show(boss.Name);
             }
+            MessageBox.Show("Done");
         }
         private Settings _settingsForm;
         private void SettingsButton_Click(object sender, EventArgs e)
